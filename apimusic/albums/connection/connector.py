@@ -1,0 +1,1 @@
+from apimusic.settings import PASSWORD_MUSIC, USER_MUSIC
