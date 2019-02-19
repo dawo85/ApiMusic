@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from albums.connection.connector import ConnectorMusic
 
 class AlbumSerializer(serializers.Serializer):
 	id = serializers.CharField(max_length=50)
@@ -11,7 +12,5 @@ class AlbumSerializer(serializers.Serializer):
 		return year
 
 	def get_release_count(self, obj):
-		release_count = 0
-		if 'release_group-relation-list' in obj:
-			release_count = len(obj['release_group-relation-list'])
+		release_count = ConnectorMusic().count_release(obj['id'])
 		return release_count
